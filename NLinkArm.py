@@ -109,4 +109,4 @@ def grid_index_to_angle(indices, M):
 	 js_2 = float((indices[1] - M // 2)*2*pi/M)
 	 return (js_1, js_2)
 
-# plt.ion()
+plt.ion()

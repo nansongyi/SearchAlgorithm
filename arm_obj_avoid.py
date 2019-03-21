@@ -22,6 +22,7 @@ def main():
 		 # step 2: set start and random goal
 		start = angle_to_grid_index(initial_link_angle,M)
 		goal = (randint(0,M-1),randint(0,M-1)) 
+		start, goal = (40, 95), (40, 50)
 		start_js = grid_index_to_angle(start, M)
 		goal_js = grid_index_to_angle(goal, M)
 		goal_pos = forward_kinematics(link_length, goal_js)
@@ -43,6 +44,10 @@ def main():
 		came_from, cost_so_far = a_star_search(graph, start, goal)
 		route = graph.reconstruct_path(came_from, start, goal)
 		time_elapsed = time.time() - start_time
+
+		for item in came_from:
+			grid[item] = 2
+
 		print('time_elapsed:',time_elapsed)
 		# route = astar_search(grid, start, goal, M)
 		print("\nstep 3: motion planning completed.")
